@@ -17,10 +17,6 @@ body {
     text-align: center;
 }
 
-.oculto {
-    display: none;
-}
-
 .conteudo {
     display: flex;
     flex-direction: column;
@@ -30,24 +26,35 @@ body {
     margin: 40px 0px;
 }
 
-.cartas {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-ul {
+.jogo-da-memoria {
     display: flex;
     flex-wrap: wrap;
     padding-right: 20%;
     padding-left: 20%;
     align-items: center;
     justify-content: center;
+    perspective: 300px;
 }
 
-.capa {
+.carta-memoria {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
     width: 130px;
     height: 180px;
+    transform-style: preserve-3d;
+    transition: transform .5s;
+    margin: 20px;
+}
+
+.costas {
+    transform: rotateY(180deg);
+}
+
+.frente, .costas {
+    width: 100%;
+    height: 100%;    
     background-color: #A7E9AF;
     border: 1px solid #99CEA8;
     border-radius: 5px;
@@ -57,9 +64,19 @@ ul {
     margin-left: 12px;
     margin-right: 12px;
     margin-bottom: 35px;
+    position: absolute;
+    backface-visibility: hidden;
 }
 
-.capa img {
-    width: 80%;
-    
+.carta-memoria.virada {
+    transform: rotateY(180deg);
+}
+
+.carta-memoria.virada-1 {
+    transform: rotateY(180deg);
+}
+
+.carta-memoria:active{
+    transform: scale(0.80);
+    transition: transform .125s;
 }
